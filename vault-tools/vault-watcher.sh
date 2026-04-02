@@ -12,6 +12,9 @@
 VAULT_DIR="/home/openclaw/obsidian-vault"
 LOG_FILE="/var/log/vault-watcher.log"
 INGEST_URL="http://localhost:8082/ingest"
+EMBED_HEALTH_URL="http://localhost:8082/health"
+EMBED_FLAG_FILE="/tmp/vault-watcher-embed-down"
+EMBED_HEALTH_INTERVAL=300  # seconds between periodic health checks
 DEBOUNCE_SECS=5
 
 # Ensure log file exists and is writable
@@ -36,6 +39,35 @@ if [[ ! -d "$VAULT_DIR/.git" ]]; then
     err "Vault is not a git repository. Run: cd $VAULT_DIR && git init"
     exit 1
 fi
+
+# --- Embed endpoint health check ---
+# Returns 0 if healthy, 1 if down.
+# Manages the flag file and logs CRITICAL/RECOVERY transitions.
+# Call before ingest attempts and on the periodic timer.
+LAST_EMBED_HEALTH_CHECK=0
+
+check_embed_health() {
+    local http_code
+    http_code=$(curl -s -o /dev/null -w "%{http_code}" --max-time 5 "$EMBED_HEALTH_URL" 2>/dev/null)
+
+    if [[ "$http_code" =~ ^2 ]]; then
+        # Endpoint is up — clear flag file if it was set (recovery)
+        if [[ -f "$EMBED_FLAG_FILE" ]]; then
+            rm -f "$EMBED_FLAG_FILE"
+            log "RECOVERY: embed_ingest.py ($EMBED_HEALTH_URL) is back up (HTTP $http_code)"
+        fi
+        LAST_EMBED_HEALTH_CHECK=$(date +%s)
+        return 0
+    else
+        # Endpoint is down — write flag file and log CRITICAL (once per transition)
+        if [[ ! -f "$EMBED_FLAG_FILE" ]]; then
+            log "CRITICAL: embed_ingest.py ($EMBED_HEALTH_URL) is not responding (HTTP ${http_code:-no response}) — writing flag $EMBED_FLAG_FILE"
+            touch "$EMBED_FLAG_FILE"
+        fi
+        LAST_EMBED_HEALTH_CHECK=$(date +%s)
+        return 1
+    fi
+}
 
 log "Starting vault watcher on $VAULT_DIR"
 
@@ -126,6 +158,12 @@ EOF
 PROCESSED=0
 
 while true; do
+    # Periodic embed health check (every EMBED_HEALTH_INTERVAL seconds)
+    NOW_PRE=$(date +%s)
+    if [[ $((NOW_PRE - LAST_EMBED_HEALTH_CHECK)) -ge $EMBED_HEALTH_INTERVAL ]]; then
+        check_embed_health || true  # don't exit on failure — loop continues either way
+    fi
+
     # Block until a single close_write event on a .md file
     filepath=$(inotifywait -e close_write --format '%w%f' "$VAULT_DIR" \
         --include '.*\.md$' --recursive -q 2>/dev/null)
@@ -152,6 +190,11 @@ while true; do
         if [[ $ELAPSED -ge $DEBOUNCE_SECS ]] && [[ -f "$fp" ]]; then
             unset PENDING_FILES["$fp"]
             unset PENDING_TIMES["$fp"]
+            # Health check before each ingest attempt
+            if ! check_embed_health; then
+                err "Skipping ingest for $fp — embed endpoint is down"
+                continue
+            fi
             process_file "$fp"
             PROCESSED=$((PROCESSED + 1))
             if [[ $((PROCESSED % 20)) -eq 0 ]]; then
