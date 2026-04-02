@@ -57,7 +57,8 @@ The retrieval itself. The query that reaps. Everything before this is preparatio
 
 - Collection-scoped search with GNN activation
 - The query is the measurement. It projects the collection into a result set.
-- 94% accuracy. 1 miss remaining (cross-domain query, unsolvable within collections by design).
+- **88% accuracy (frozen baseline, K=4, boost=0.035).** 2 misses remaining — both cross-domain queries, unsolvable within collections by design.
+- 94% observed in a single Cycle 3 parameter sweep (18 queries, K=3, boost=0.05, top=3) — candidate result, not yet validated at scale.
 
 In EIGEN terms: HARVEST is the projection R applied to the state. The query selects the eigenbasis. The result is the measurement outcome.
 
@@ -72,14 +73,15 @@ HARVEST delivers the result.
 
 ## Evidence
 
-| Config | Score | Delta |
-|--------|-------|-------|
-| Flat baseline (no PLOW) | 66% | -- |
-| PLOW only (collections) | 83% | +17% |
-| PLOW + TILL (coll + GNN K=3 b=0.05 top=3) | 94% | +28% |
-| PLOW + wrong TILL (default GNN params) | 77% | +11% |
-| No PLOW + TILL (GNN on flat) | 66% | 0% |
-| PLOW + SALT (IIT within collections) | 66% | 0% (erased PLOW gains) |
+| Config | Score | Delta | Status |
+|--------|-------|-------|--------|
+| Flat baseline (no PLOW) | 66% | -- | frozen |
+| PLOW only (collections) | 83% | +17% | frozen |
+| **PLOW + TILL (coll + GNN K=4 b=0.035)** | **88%** | **+22%** | **frozen baseline** |
+| PLOW + TILL (coll + GNN K=3 b=0.05 top=3) | 94% | +28% | candidate — single sweep, 18 queries, needs revalidation |
+| PLOW + wrong TILL (default GNN params) | 77% | +11% | frozen |
+| No PLOW + TILL (GNN on flat) | 66% | 0% | frozen |
+| PLOW + SALT (IIT within collections) | 66% | 0% (erased PLOW gains) | frozen |
 
 11 killed hypotheses. 15+ tests. Topology confirmed representation-invariant.
 

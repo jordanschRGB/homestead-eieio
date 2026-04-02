@@ -34,7 +34,7 @@ Source: github.com/ruvnet/ruvector/tree/main/crates
 3. IIT is a poison pill. Zeroes out all gains in every combo.
 4. Only 2 queries still miss: "survival prioritization" and "professionalism under pressure" — both require cross-domain reasoning.
 
-**UPDATE (late 2026-04-01):** Cycle 3 parameter sweep found **94% (17/18) at K=3, boost=0.05, top=3.** Tightest graph projection = best result. See [[rosetta-stone-layer-ordering-principle]] for full analysis.
+**UPDATE (late 2026-04-01):** Cycle 3 parameter sweep found **94% (17/18) at K=3, boost=0.05, top=3** — but this is a **candidate result only**: single sweep, 18 queries, not revalidated. Frozen baseline remains **88% at K=4, boost=0.035**. Tightest graph projection = best result. See [[rosetta-stone-layer-ordering-principle]] for full analysis.
 
 ## Crate Classification System
 
@@ -51,8 +51,8 @@ Reshape the search space topology before retrieval touches it.
 ### Class 2: READERS (graph layer)
 Read permanent neighborhood structure. Confirm eigenspace activation.
 
-- **ruvector-gnn** — static KNN graph activation check. PROVEN +5% on collections (88-94%).
-- K=3, boost=0.05, top=3 is optimal. Tightest projection = best.
+- **ruvector-gnn** — static KNN graph activation check. PROVEN +5% on collections (88% frozen baseline at K=4, boost=0.035).
+- 94% observed at K=3, boost=0.05, top=3 in a single sweep — candidate, not yet validated. Tightest projection = best.
 
 ### Class 3: AMPLIFIERS (measurement layer)
 Find load-bearing structure. Diagnostic, not operational.

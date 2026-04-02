@@ -22,10 +22,10 @@ A local-first knowledge system where:
 
 ## Proven Results
 
-- 94% retrieval accuracy (HOMESTEAD benchmark)
+- **88% retrieval accuracy** (HOMESTEAD benchmark, frozen baseline — K=4, boost=0.035)
 - 60 Rust crates analyzed, Bayesian-optimized collection configs
-- K=3, boost=0.05, top=3 (frozen baseline)
-- +17-28% retrieval gain from collection topology vs flat search
+- +22% gain over 66% flat baseline (collections + GNN tuned)
+- 94% observed in a single Cycle 3 parameter sweep (18 queries) — candidate result, needs revalidation before promoting
 
 ## Runs On
 
