@@ -244,3 +244,68 @@ Based on existing spec gaps + new architecture delta:
 *Report generated: 2026-04-01*
 *Sources: 4 vault files + 2 Notion pages*
 *Decision pending: Conflict 2 (vault vs ruvector canonical truth)*
+
+---
+
+## Conflict Resolutions
+
+*Resolved: 2026-04-02*
+
+### Resolution 1: GNN Edge Sources
+
+**Decision:** Vault wikilinks are primary edges. Embedding similarity is secondary/candidate edges. Both feed the GNN, but wikilinks get higher weight.
+
+**Reasoning:** Wikilinks are human-authored connections — they represent verified intent, not statistical proximity. They are already part of the human approval loop design (git-per-action, confirm/revert). Embedding similarity is useful for discovering candidate edges the human hasn't created yet, but it cannot override an explicit human choice. In GNN terms: wikilink edges are trusted; similarity edges are proposed.
+
+**Implementation note:** The existing K=3, boost=0.05, top=3 params were tuned on a pure cosine graph. Adding wikilink edges changes the graph topology. Ablation is still required before shipping — but the weighting hierarchy is settled: wikilinks win ties, similarity fills gaps.
+
+**Layer:** L1 (TILL operation extension).
+
+---
+
+### Resolution 2: Canonical Truth Location
+
+**Decision:** The vault (markdown files) is canonical truth. RuVector is a derived index. If they disagree, vault wins.
+
+**Reasoning:** The vault can be rebuilt from scratch into RuVector at any time — the embed pipeline is the reconstruction path. RuVector cannot be rebuilt into a vault; it contains vectors, not human-readable documents with structure, metadata, and wikilinks. Canonical truth must live in the thing that is not reconstructable. The vault is that thing.
+
+**Corollary:** A corrupted vault is a real emergency. A corrupted RuVector is a rebuild job. Design accordingly — vault gets the same care as production data: git versioning, backup, no destructive writes without a commit.
+
+**Operational consequence:** The vault watcher is not optional infrastructure. It is the sync path between canonical truth (vault) and the query index (RuVector). Staleness in RuVector is tolerable; staleness in the vault is data loss.
+
+**Supersedes:** The existing spec's framing of ruvector as the operational database. That framing made sense before the vault self-heal design was added. It no longer reflects the architecture.
+
+---
+
+### Resolution 3: Threshold Models
+
+**Decision:** Start with static global thresholds. Dynamic per-region thresholds from the meta-collection are an L2 extension, implemented only after the static system is proven.
+
+**Reasoning:** This is a direct application of Rosetta Stone layer ordering — L0 before L1 before L2, no skipping. Static thresholds (0.7 assign, 0.5-0.7 borderline, <0.5 new category) are simple, inspectable, and debuggable. Dynamic thresholds depend on a functioning meta-collection, which depends on a functioning ingest pipeline, which depends on a static threshold system to generate the confirmed/reverted decisions the meta-collection learns from.
+
+**Build order enforced:** Static thresholds ship in the nightly cron ingest (Priority 1). Meta-collection dynamic thresholds are blocked until the static system has generated enough confirmed/reverted decisions to train against. Attempting to skip this produces the same failure mode as running IIT on flat vector space — you're applying an L2 mechanism to an L0 substrate.
+
+**The vault self-heal doc's framing** ("dynamic thresholds supersede Step 6") is correct about the eventual state. It is not a license to skip static thresholds on the way there.
+
+---
+
+### Resolution 4: Data Type of Preferences
+
+**Decision:** Store preferences as structured key-value pairs in frontmatter, not as free-text embeddings.
+
+**Reasoning:** Embeddings capture semantic similarity — they are the right tool for "find things like this." Preferences require exact recall — "always use metric units," "never suggest X," "respond in style Y." A preference stored as an embedding can be retrieved approximately. A preference stored as a frontmatter key-value pair is retrieved exactly, every time, with zero drift.
+
+**The Opus proposal** (preferences as steerable vectors you edit to change behavior) is architecturally interesting but conflates two different retrieval needs. Semantic steering via embeddings works for knowledge retrieval. It is unreliable for behavioral constraints, which need deterministic lookup.
+
+**Practical format:**
+```yaml
+---
+preference_key: response_style
+value: concise
+scope: global
+---
+```
+
+The preference .md file can still be embedded for semantic search purposes — but the authoritative value is always read from frontmatter, not inferred from the vector. Embedding captures the prose explanation; frontmatter carries the executable rule.
+
+**Layer:** L0/L1 boundary — frontmatter parsing happens at ingest, before embedding. The structure must be established at L0 or it cannot be depended on at L1+.

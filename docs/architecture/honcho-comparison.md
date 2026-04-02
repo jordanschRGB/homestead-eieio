@@ -55,6 +55,8 @@ Current Rock 5B memory baseline (approximate):
 
 **Approximate idle baseline: ~5GB used, 11GB available**
 
+> **Note — this is an optimistic estimate.** The line items above account for named services but undercount real-world load. In practice the Rock also runs embed_ingest (port 8082), actions-runner (~137MB), and the rkllama NPU process even when idle. Under normal multi-agent load (gateway + pairing instances + background jobs), actual RAM usage runs 10–12GB. The ~5GB figure reflects a quiet single-agent session, not a representative workload. This does not change the conclusion — Honcho's Deriver process still adds 2–3GB on top of an already-busy box — but the headroom math is tighter than the table suggests.
+
 Honcho adds:
 - PostgreSQL 15 + pgvector: ~500MB–1.5GB depending on dataset size
 - FastAPI server: ~200MB
