@@ -1,0 +1,27 @@
+[Unit]
+Description=Obsidian Vault Watcher — live embedding to RuVector
+After=network.target ruvector.service
+Wants=ruvector.service
+
+[Service]
+Type=simple
+User=openclaw
+Group=openclaw
+WorkingDirectory=/home/openclaw/.openclaw/workspace/scripts
+ExecStart=/bin/bash /home/openclaw/.openclaw/workspace/scripts/vault-watcher.sh
+Restart=on-failure
+RestartSec=10
+StandardOutput=journal
+StandardError=journal
+# Security hardening
+NoNewPrivileges=true
+ProtectSystem=strict
+ProtectHome=true
+ReadWritePaths=/var/log /home/openclaw/obsidian-vault
+PrivateTmp=true
+
+# Environment
+Environment="PATH=/usr/local/sbin:/usr/local/bin:/usr/sbin:/usr/bin:/sbin:/bin"
+
+[Install]
+WantedBy=multi-user.target
