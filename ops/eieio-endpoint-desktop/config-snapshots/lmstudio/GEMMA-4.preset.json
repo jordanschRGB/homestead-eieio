@@ -1,0 +1,27 @@
+{
+  "identifier": "@local:gemma-4",
+  "name": "GEMMA 4",
+  "changed": true,
+  "operation": {
+    "fields": [
+      {
+        "key": "llm.prediction.structured",
+        "value": {
+          "type": "none",
+          "jsonSchema": ""
+        }
+      },
+      {
+        "key": "llm.prediction.temperature",
+        "value": 0.93
+      },
+      {
+        "key": "ext.virtualModel.customField.google.gemma4E4b.enableThinking",
+        "value": false
+      }
+    ]
+  },
+  "load": {
+    "fields": []
+  }
+}

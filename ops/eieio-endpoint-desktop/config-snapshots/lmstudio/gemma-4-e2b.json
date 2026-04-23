@@ -1,0 +1,26 @@
+{
+  "preset": "",
+  "operation": {
+    "fields": [
+      {
+        "key": "llm.prediction.structured",
+        "value": {
+          "type": "none",
+          "jsonSchema": ""
+        }
+      },
+      {
+        "key": "ext.virtualModel.customField.google.gemma4E2b.enableThinking",
+        "value": false
+      }
+    ]
+  },
+  "load": {
+    "fields": [
+      {
+        "key": "llm.load.contextLength",
+        "value": 57909
+      }
+    ]
+  }
+}

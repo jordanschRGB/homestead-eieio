@@ -1,0 +1,278 @@
+[34m0.00.024.285[0m [32mI [0mmain: n_parallel is set to auto, using n_parallel = 4 and kv_unified = true
+[34m0.00.024.307[0m [32mI [0mbuild_info: b1-e365e65
+[34m0.00.024.344[0m [32mI [0msystem_info: n_threads = 16 (n_threads_batch = 16) / 32 | CPU : SSE3 = 1 | SSSE3 = 1 | AVX = 1 | AVX2 = 1 | F16C = 1 | FMA = 1 | BMI2 = 1 | AVX512 = 1 | AVX512_VBMI = 1 | AVX512_VNNI = 1 | AVX512_BF16 = 1 | LLAMAFILE = 1 | REPACK = 1 | 
+[34m0.00.024.360[0m [32mI [0minit: using 31 threads for HTTP server
+[34m0.00.024.364[0m [32mI [0mWeb UI is disabled
+[34m0.00.024.432[0m [32mI [0mstart: binding port with default address family
+[34m0.00.026.995[0m [32mI [0mmain: loading model
+[34m0.00.027.006[0m [32mI [0msrv    load_model: loading model 'C:\Users\jorda\.lmstudio\models\argus-ai\pplx-embed-context-v1-0.6b-GGUF\pplx-embed-context-v1-0.6b-q8_0.gguf'
+[34m0.00.027.058[0m [32mI [0mcommon_init_result: fitting params to device memory, for bugs during this step try to reproduce them with -fit off, or provide --verbose logs if the bug only occurs with -fit on
+[34m0.00.277.488[0m [32mI [0mllama_params_fit_impl: projected to use 5823 MiB of device memory vs. 15205 MiB of free device memory
+[34m0.00.277.493[0m [32mI [0mllama_params_fit_impl: will leave 9382 >= 1024 MiB of free device memory, no changes needed
+[34m0.00.277.502[0m [32mI [0mllama_params_fit: successfully fit params to free device memory
+[34m0.00.277.507[0m [32mI [0mllama_params_fit: fitting params to free memory took 0.25 seconds
+[34m0.00.282.541[0m [32mI [0mllama_model_load_from_file_impl: using device Vulkan0 (NVIDIA GeForce RTX 5080) (0000:01:00.0) - 15205 MiB free
+[34m0.00.302.976[0m [32mI [0mllama_model_loader: loaded meta data with 32 key-value pairs and 310 tensors from C:\Users\jorda\.lmstudio\models\argus-ai\pplx-embed-context-v1-0.6b-GGUF\pplx-embed-context-v1-0.6b-q8_0.gguf (version GGUF V3 (latest))
+[34m0.00.302.986[0m [32mI [0mllama_model_loader: Dumping metadata keys/values. Note: KV overrides do not apply in this output.
+[34m0.00.302.989[0m [32mI [0mllama_model_loader: - kv   0:                       general.architecture str              = qwen3
+[34m0.00.302.989[0m [32mI [0mllama_model_loader: - kv   1:                               general.type str              = model
+[34m0.00.302.990[0m [32mI [0mllama_model_loader: - kv   2:                               general.name str              = Pplx_Context_V1_Src
+[34m0.00.302.991[0m [32mI [0mllama_model_loader: - kv   3:                         general.size_label str              = 596M
+[34m0.00.302.991[0m [32mI [0mllama_model_loader: - kv   4:                            general.license str              = mit
+[34m0.00.303.003[0m [32mI [0mllama_model_loader: - kv   5:                               general.tags arr[str,5]       = ["feature-extraction", "sentence-simi...
+[34m0.00.303.004[0m [32mI [0mllama_model_loader: - kv   6:                          general.languages arr[str,1]       = ["multilingual"]
+[34m0.00.303.005[0m [32mI [0mllama_model_loader: - kv   7:                          qwen3.block_count u32              = 28
+[34m0.00.303.006[0m [32mI [0mllama_model_loader: - kv   8:                       qwen3.context_length u32              = 32768
+[34m0.00.303.006[0m [32mI [0mllama_model_loader: - kv   9:                     qwen3.embedding_length u32              = 1024
+[34m0.00.303.006[0m [32mI [0mllama_model_loader: - kv  10:                  qwen3.feed_forward_length u32              = 3072
+[34m0.00.303.007[0m [32mI [0mllama_model_loader: - kv  11:                 qwen3.attention.head_count u32              = 16
+[34m0.00.303.007[0m [32mI [0mllama_model_loader: - kv  12:              qwen3.attention.head_count_kv u32              = 8
+[34m0.00.303.012[0m [32mI [0mllama_model_loader: - kv  13:                       qwen3.rope.freq_base f32              = 1000000.000000
+[34m0.00.303.014[0m [32mI [0mllama_model_loader: - kv  14:     qwen3.attention.layer_norm_rms_epsilon f32              = 0.000001
+[34m0.00.303.015[0m [32mI [0mllama_model_loader: - kv  15:                 qwen3.attention.key_length u32              = 128
+[34m0.00.303.015[0m [32mI [0mllama_model_loader: - kv  16:               qwen3.attention.value_length u32              = 128
+[34m0.00.303.016[0m [32mI [0mllama_model_loader: - kv  17:                         qwen3.pooling_type u32              = 1
+[34m0.00.303.016[0m [32mI [0mllama_model_loader: - kv  18:                     qwen3.attention.causal bool             = false
+[34m0.00.303.016[0m [32mI [0mllama_model_loader: - kv  19:                       tokenizer.ggml.model str              = gpt2
+[34m0.00.303.017[0m [32mI [0mllama_model_loader: - kv  20:                         tokenizer.ggml.pre str              = qwen2
+[34m0.00.318.893[0m [32mI [0mllama_model_loader: - kv  21:                      tokenizer.ggml.tokens arr[str,151936]  = ["!", "\"", "#", "$", "%", "&", "'", ...
+[34m0.00.324.135[0m [32mI [0mllama_model_loader: - kv  22:                  tokenizer.ggml.token_type arr[i32,151936]  = [1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, ...
+[34m0.00.340.149[0m [32mI [0mllama_model_loader: - kv  23:                      tokenizer.ggml.merges arr[str,151387]  = ["Ġ Ġ", "ĠĠ ĠĠ", "i n", "Ġ t",...
+[34m0.00.340.152[0m [32mI [0mllama_model_loader: - kv  24:                tokenizer.ggml.eos_token_id u32              = 151643
+[34m0.00.340.153[0m [32mI [0mllama_model_loader: - kv  25:          tokenizer.ggml.seperator_token_id u32              = 151643
+[34m0.00.340.153[0m [32mI [0mllama_model_loader: - kv  26:            tokenizer.ggml.padding_token_id u32              = 151643
+[34m0.00.340.153[0m [32mI [0mllama_model_loader: - kv  27:               tokenizer.ggml.mask_token_id u32              = 151642
+[34m0.00.340.154[0m [32mI [0mllama_model_loader: - kv  28:                tokenizer.ggml.bos_token_id u32              = 151643
+[34m0.00.340.155[0m [32mI [0mllama_model_loader: - kv  29:               tokenizer.ggml.add_bos_token bool             = false
+[34m0.00.340.156[0m [32mI [0mllama_model_loader: - kv  30:               general.quantization_version u32              = 2
+[34m0.00.340.156[0m [32mI [0mllama_model_loader: - kv  31:                          general.file_type u32              = 7
+[34m0.00.340.158[0m [32mI [0mllama_model_loader: - type  f32:  113 tensors
+[34m0.00.340.158[0m [32mI [0mllama_model_loader: - type q8_0:  197 tensors
+[34m0.00.340.160[0m [32mI [0mprint_info: file format = GGUF V3 (latest)
+[34m0.00.340.160[0m [32mI [0mprint_info: file type   = Q8_0
+[34m0.00.340.164[0m [32mI [0mprint_info: file size   = 604.15 MiB (8.50 BPW) 
+[34m0.00.389.915[0m [32mI [0mload: 0 unused tokens
+[34m0.00.399.180[0m [35mW load: control-looking token: 128247 '</s>' was not control-type; this is probably a bug in the model. its type will be overridden
+[0m[34m0.00.402.638[0m [32mI [0mload: printing all EOG tokens:
+[34m0.00.402.641[0m [32mI [0mload:   - 128247 ('</s>')
+[34m0.00.402.642[0m [32mI [0mload:   - 151643 ('<|endoftext|>')
+[34m0.00.402.642[0m [32mI [0mload:   - 151645 ('<|im_end|>')
+[34m0.00.402.642[0m [32mI [0mload:   - 151662 ('<|fim_pad|>')
+[34m0.00.402.643[0m [32mI [0mload:   - 151663 ('<|repo_name|>')
+[34m0.00.402.643[0m [32mI [0mload:   - 151664 ('<|file_sep|>')
+[34m0.00.402.756[0m [32mI [0mload: special tokens cache size = 28
+[34m0.00.418.630[0m [32mI [0mload: token to piece cache size = 0.9311 MB
+[34m0.00.418.642[0m [32mI [0mprint_info: arch                  = qwen3
+[34m0.00.418.642[0m [32mI [0mprint_info: vocab_only            = 0
+[34m0.00.418.643[0m [32mI [0mprint_info: no_alloc              = 0
+[34m0.00.418.643[0m [32mI [0mprint_info: n_ctx_train           = 32768
+[34m0.00.418.643[0m [32mI [0mprint_info: n_embd                = 1024
+[34m0.00.418.644[0m [32mI [0mprint_info: n_embd_inp            = 1024
+[34m0.00.418.644[0m [32mI [0mprint_info: n_layer               = 28
+[34m0.00.418.654[0m [32mI [0mprint_info: n_head                = 16
+[34m0.00.418.656[0m [32mI [0mprint_info: n_head_kv             = 8
+[34m0.00.418.656[0m [32mI [0mprint_info: n_rot                 = 128
+[34m0.00.418.657[0m [32mI [0mprint_info: n_swa                 = 0
+[34m0.00.418.657[0m [32mI [0mprint_info: is_swa_any            = 0
+[34m0.00.418.657[0m [32mI [0mprint_info: n_embd_head_k         = 128
+[34m0.00.418.657[0m [32mI [0mprint_info: n_embd_head_v         = 128
+[34m0.00.418.658[0m [32mI [0mprint_info: n_gqa                 = 2
+[34m0.00.418.660[0m [32mI [0mprint_info: n_embd_k_gqa          = 1024
+[34m0.00.418.661[0m [32mI [0mprint_info: n_embd_v_gqa          = 1024
+[34m0.00.418.663[0m [32mI [0mprint_info: f_norm_eps            = 0.0e+00
+[34m0.00.418.664[0m [32mI [0mprint_info: f_norm_rms_eps        = 1.0e-06
+[34m0.00.418.665[0m [32mI [0mprint_info: f_clamp_kqv           = 0.0e+00
+[34m0.00.418.665[0m [32mI [0mprint_info: f_max_alibi_bias      = 0.0e+00
+[34m0.00.418.665[0m [32mI [0mprint_info: f_logit_scale         = 0.0e+00
+[34m0.00.418.665[0m [32mI [0mprint_info: f_attn_scale          = 0.0e+00
+[34m0.00.418.667[0m [32mI [0mprint_info: n_ff                  = 3072
+[34m0.00.418.667[0m [32mI [0mprint_info: n_expert              = 0
+[34m0.00.418.667[0m [32mI [0mprint_info: n_expert_used         = 0
+[34m0.00.418.667[0m [32mI [0mprint_info: n_expert_groups       = 0
+[34m0.00.418.668[0m [32mI [0mprint_info: n_group_used          = 0
+[34m0.00.418.668[0m [32mI [0mprint_info: causal attn           = 0
+[34m0.00.418.668[0m [32mI [0mprint_info: pooling type          = 1
+[34m0.00.418.669[0m [32mI [0mprint_info: rope type             = 2
+[34m0.00.418.669[0m [32mI [0mprint_info: rope scaling          = linear
+[34m0.00.418.670[0m [32mI [0mprint_info: freq_base_train       = 1000000.0
+[34m0.00.418.671[0m [32mI [0mprint_info: freq_scale_train      = 1
+[34m0.00.418.672[0m [32mI [0mprint_info: n_ctx_orig_yarn       = 32768
+[34m0.00.418.672[0m [32mI [0mprint_info: rope_yarn_log_mul     = 0.0000
+[34m0.00.418.672[0m [32mI [0mprint_info: rope_finetuned        = unknown
+[34m0.00.418.673[0m [32mI [0mprint_info: model type            = 0.6B
+[34m0.00.418.674[0m [32mI [0mprint_info: model params          = 596.05 M
+[34m0.00.418.674[0m [32mI [0mprint_info: general.name          = Pplx_Context_V1_Src
+[34m0.00.418.675[0m [32mI [0mprint_info: vocab type            = BPE
+[34m0.00.418.675[0m [32mI [0mprint_info: n_vocab               = 151936
+[34m0.00.418.676[0m [32mI [0mprint_info: n_merges              = 151387
+[34m0.00.418.676[0m [32mI [0mprint_info: BOS token             = 151643 '<|endoftext|>'
+[34m0.00.418.676[0m [32mI [0mprint_info: EOS token             = 151643 '<|endoftext|>'
+[34m0.00.418.677[0m [32mI [0mprint_info: EOT token             = 151645 '<|im_end|>'
+[34m0.00.418.677[0m [32mI [0mprint_info: SEP token             = 151643 '<|endoftext|>'
+[34m0.00.418.677[0m [32mI [0mprint_info: PAD token             = 151643 '<|endoftext|>'
+[34m0.00.418.678[0m [32mI [0mprint_info: MASK token            = 151642 '⽗'
+[34m0.00.418.678[0m [32mI [0mprint_info: LF token              = 198 'Ċ'
+[34m0.00.418.678[0m [32mI [0mprint_info: FIM PRE token         = 151659 '<|fim_prefix|>'
+[34m0.00.418.679[0m [32mI [0mprint_info: FIM SUF token         = 151661 '<|fim_suffix|>'
+[34m0.00.418.679[0m [32mI [0mprint_info: FIM MID token         = 151660 '<|fim_middle|>'
+[34m0.00.418.680[0m [32mI [0mprint_info: FIM PAD token         = 151662 '<|fim_pad|>'
+[34m0.00.418.680[0m [32mI [0mprint_info: FIM REP token         = 151663 '<|repo_name|>'
+[34m0.00.418.680[0m [32mI [0mprint_info: FIM SEP token         = 151664 '<|file_sep|>'
+[34m0.00.418.680[0m [32mI [0mprint_info: EOG token             = 128247 '</s>'
+[34m0.00.418.681[0m [32mI [0mprint_info: EOG token             = 151643 '<|endoftext|>'
+[34m0.00.418.681[0m [32mI [0mprint_info: EOG token             = 151645 '<|im_end|>'
+[34m0.00.418.681[0m [32mI [0mprint_info: EOG token             = 151662 '<|fim_pad|>'
+[34m0.00.418.681[0m [32mI [0mprint_info: EOG token             = 151663 '<|repo_name|>'
+[34m0.00.418.682[0m [32mI [0mprint_info: EOG token             = 151664 '<|file_sep|>'
+[34m0.00.418.682[0m [32mI [0mprint_info: max token length      = 256
+[34m0.00.418.683[0m [32mI [0mload_tensors: loading model tensors, this can take a while... (mmap = true, direct_io = false)
+[34m0.00.494.304[0m [32mI [0mload_tensors: offloading output layer to GPU
+[34m0.00.494.323[0m [32mI [0mload_tensors: offloading 27 repeating layers to GPU
+[34m0.00.494.325[0m [32mI [0mload_tensors: offloaded 29/29 layers to GPU
+[34m0.00.494.336[0m [32mI [0mload_tensors:   CPU_Mapped model buffer size =   157.65 MiB
+[34m0.00.494.338[0m [32mI [0mload_tensors:      Vulkan0 model buffer size =   604.15 MiB
+.............................................................
+[34m0.00.812.954[0m [32mI [0mcommon_init_result: added </s> logit bias = -inf
+[34m0.00.813.037[0m [32mI [0mcommon_init_result: added <|endoftext|> logit bias = -inf
+[34m0.00.813.039[0m [32mI [0mcommon_init_result: added <|im_end|> logit bias = -inf
+[34m0.00.813.041[0m [32mI [0mcommon_init_result: added <|fim_pad|> logit bias = -inf
+[34m0.00.813.043[0m [32mI [0mcommon_init_result: added <|repo_name|> logit bias = -inf
+[34m0.00.813.045[0m [32mI [0mcommon_init_result: added <|file_sep|> logit bias = -inf
+[34m0.00.813.302[0m [32mI [0mllama_context: constructing llama_context
+[34m0.00.813.308[0m [32mI [0mllama_context: n_seq_max     = 4
+[34m0.00.813.309[0m [32mI [0mllama_context: n_ctx         = 32768
+[34m0.00.813.310[0m [32mI [0mllama_context: n_ctx_seq     = 32768
+[34m0.00.813.312[0m [32mI [0mllama_context: n_batch       = 2048
+[34m0.00.813.314[0m [32mI [0mllama_context: n_ubatch      = 2048
+[34m0.00.813.314[0m [32mI [0mllama_context: causal_attn   = 0
+[34m0.00.813.316[0m [32mI [0mllama_context: flash_attn    = auto
+[34m0.00.813.317[0m [32mI [0mllama_context: kv_unified    = true
+[34m0.00.813.325[0m [32mI [0mllama_context: freq_base     = 1000000.0
+[34m0.00.813.331[0m [32mI [0mllama_context: freq_scale    = 1
+[34m0.00.814.351[0m [32mI [0mllama_context: Vulkan_Host  output buffer size =     2.33 MiB
+[34m0.01.251.356[0m [32mI [0mllama_kv_cache:    Vulkan0 KV buffer size =  3584.00 MiB
+[34m0.01.538.578[0m [32mI [0mllama_kv_cache: size = 3584.00 MiB ( 32768 cells,  28 layers,  4/1 seqs), K (f16): 1792.00 MiB, V (f16): 1792.00 MiB
+[34m0.01.538.609[0m [32mI [0mllama_kv_cache: attn_rot_k = 0, n_embd_head_k_all = 128
+[34m0.01.538.611[0m [32mI [0mllama_kv_cache: attn_rot_v = 0, n_embd_head_k_all = 128
+[34m0.01.538.643[0m [32mI [0msched_reserve: reserving ...
+[34m0.01.541.829[0m [32mI [0msched_reserve: Flash Attention was auto, set to enabled
+[34m0.01.541.834[0m [32mI [0msched_reserve: resolving fused Gated Delta Net support:
+[34m0.01.542.262[0m [32mI [0msched_reserve: fused Gated Delta Net (autoregressive) enabled
+[34m0.01.542.591[0m [32mI [0msched_reserve: fused Gated Delta Net (chunked) enabled
+[34m0.01.658.252[0m [32mI [0msched_reserve:    Vulkan0 compute buffer size =  1635.08 MiB
+[34m0.01.658.264[0m [32mI [0msched_reserve: Vulkan_Host compute buffer size =   272.09 MiB
+[34m0.01.658.267[0m [32mI [0msched_reserve: graph nodes  = 990
+[34m0.01.658.267[0m [32mI [0msched_reserve: graph splits = 2
+[34m0.01.658.272[0m [32mI [0msched_reserve: reserve took 119.62 ms, sched copies = 1
+[34m0.01.658.531[0m [35mW common_init_from_params: warming up the model with an empty run - please wait ... (--no-warmup to disable)
+[0m[34m0.01.971.524[0m [32mI [0msrv    load_model: initializing slots, n_slots = 4
+[34m0.02.025.268[0m [35mW no implementations specified for speculative decoding
+[0m[34m0.02.025.280[0m [32mI [0mslot   load_model: id  0 | task -1 | new slot, n_ctx = 32768
+[34m0.02.025.283[0m [35mW no implementations specified for speculative decoding
+[0m[34m0.02.025.284[0m [32mI [0mslot   load_model: id  1 | task -1 | new slot, n_ctx = 32768
+[34m0.02.025.284[0m [35mW no implementations specified for speculative decoding
+[0m[34m0.02.025.285[0m [32mI [0mslot   load_model: id  2 | task -1 | new slot, n_ctx = 32768
+[34m0.02.025.285[0m [35mW no implementations specified for speculative decoding
+[0m[34m0.02.025.286[0m [32mI [0mslot   load_model: id  3 | task -1 | new slot, n_ctx = 32768
+[34m0.02.025.386[0m [35mW srv    load_model: prompt cache is enabled, size limit: 8192 MiB
+[0m[34m0.02.025.387[0m [35mW srv    load_model: use `--cache-ram 0` to disable the prompt cache
+[0m[34m0.02.025.388[0m [35mW srv    load_model: for more info see https://github.com/ggml-org/llama.cpp/pull/16391
+[0m[34m0.02.025.410[0m [32mI [0msrv          init: init: idle slots will be saved to prompt cache and cleared upon starting a new task
+[34m0.02.027.077[0m [32mI [0minit: chat template, example_format: '<|im_start|>system
+You are a helpful assistant<|im_end|>
+<|im_start|>user
+Hello<|im_end|>
+<|im_start|>assistant
+Hi there<|im_end|>
+<|im_start|>user
+How are you?<|im_end|>
+<|im_start|>assistant
+'
+[34m0.02.027.633[0m [32mI [0msrv          init: init: chat template, thinking = 0
+[34m0.02.027.646[0m [32mI [0mmain: model loaded
+[34m0.02.027.648[0m [32mI [0mmain: server is listening on http://0.0.0.0:8010
+[34m0.02.027.648[0m [32mI [0mmain: starting the main loop...
+[34m0.02.027.653[0m [32mI [0msrv  update_slots: all slots are idle
+[34m6.13.912.462[0m [32mI [0mslot get_availabl: id  3 | task -1 | selected slot by LRU, t_last = -1
+[34m6.13.912.475[0m [32mI [0mslot launch_slot_: id  3 | task 0 | processing task, is_child = 0
+[34m6.13.912.482[0m [32mI [0mslot update_slots: id  3 | task 0 | new prompt, n_ctx_slot = 32768, n_keep = 0, task.n_tokens = 7
+[34m6.13.912.486[0m [32mI [0mslot update_slots: id  3 | task 0 | n_tokens = 0, memory_seq_rm [0, end)
+[34m6.13.912.657[0m [32mI [0mslot update_slots: id  3 | task 0 | prompt processing done, n_tokens = 7, batch.n_tokens = 7
+[34m6.14.791.609[0m [32mI [0mslot      release: id  3 | task 0 | stop processing: n_tokens = 7, truncated = 0
+[34m6.14.791.623[0m [32mI [0msrv  update_slots: all slots are idle
+[34m6.14.792.432[0m [32mI [0msrv  log_server_r: done request: POST /v1/embeddings 100.95.171.42 200
+[34m6.14.809.527[0m [32mI [0mslot get_availabl: id  2 | task -1 | selected slot by LRU, t_last = -1
+[34m6.14.809.535[0m [32mI [0mslot launch_slot_: id  2 | task 2 | processing task, is_child = 0
+[34m6.14.809.536[0m [32mI [0mslot slot_save_an: id  3 | task -1 | saving idle slot to prompt cache
+[34m6.14.809.563[0m [35mW srv   prompt_save:  - saving prompt with length 7, total state size = 0.766 MiB
+[0m[34m6.14.814.507[0m [32mI [0mslot prompt_clear: id  3 | task -1 | clearing prompt with 7 tokens
+[34m6.14.814.532[0m [35mW srv        update:  - cache state: 1 prompts, 0.766 MiB (limits: 8192.000 MiB, 32768 tokens, 74826 est)
+[0m[34m6.14.814.534[0m [35mW srv        update:    - prompt 000002A6C4CAF790:       7 tokens, checkpoints:  0,     0.766 MiB
+[0m[34m6.14.814.543[0m [32mI [0mslot update_slots: id  2 | task 2 | new prompt, n_ctx_slot = 32768, n_keep = 0, task.n_tokens = 3
+[34m6.14.814.545[0m [32mI [0mslot update_slots: id  2 | task 2 | n_tokens = 0, memory_seq_rm [0, end)
+[34m6.14.814.559[0m [32mI [0mslot update_slots: id  2 | task 2 | prompt processing done, n_tokens = 3, batch.n_tokens = 3
+[34m6.15.222.613[0m [32mI [0mslot      release: id  2 | task 2 | stop processing: n_tokens = 3, truncated = 0
+[34m6.15.222.627[0m [32mI [0msrv  update_slots: all slots are idle
+[34m6.15.223.036[0m [32mI [0msrv  log_server_r: done request: POST /v1/embeddings 100.95.171.42 200
+[34m20.46.377.227[0m [32mI [0mslot get_availabl: id  1 | task -1 | selected slot by LRU, t_last = -1
+[34m20.46.377.238[0m [32mI [0mslot launch_slot_: id  1 | task 4 | processing task, is_child = 0
+[34m20.46.377.239[0m [32mI [0mslot slot_save_an: id  2 | task -1 | saving idle slot to prompt cache
+[34m20.46.377.283[0m [35mW srv   prompt_save:  - saving prompt with length 3, total state size = 0.329 MiB
+[0m[34m20.46.381.882[0m [32mI [0mslot prompt_clear: id  2 | task -1 | clearing prompt with 3 tokens
+[34m20.46.381.909[0m [35mW srv        update:  - cache state: 2 prompts, 1.095 MiB (limits: 8192.000 MiB, 32768 tokens, 74800 est)
+[0m[34m20.46.381.911[0m [35mW srv        update:    - prompt 000002A6C4CAF790:       7 tokens, checkpoints:  0,     0.766 MiB
+[0m[34m20.46.381.912[0m [35mW srv        update:    - prompt 000002A6C4CAFAA0:       3 tokens, checkpoints:  0,     0.329 MiB
+[0m[34m20.46.381.922[0m [32mI [0mslot update_slots: id  1 | task 4 | new prompt, n_ctx_slot = 32768, n_keep = 0, task.n_tokens = 3
+[34m20.46.381.923[0m [32mI [0mslot update_slots: id  1 | task 4 | n_tokens = 0, memory_seq_rm [0, end)
+[34m20.46.381.940[0m [32mI [0mslot update_slots: id  1 | task 4 | prompt processing done, n_tokens = 3, batch.n_tokens = 3
+[34m20.46.386.154[0m [32mI [0mslot      release: id  1 | task 4 | stop processing: n_tokens = 3, truncated = 0
+[34m20.46.386.164[0m [32mI [0msrv  update_slots: all slots are idle
+[34m20.46.386.635[0m [32mI [0msrv  log_server_r: done request: POST /v1/embeddings 100.95.171.42 200
+[34m44.49.481.089[0m [32mI [0mslot get_availabl: id  0 | task -1 | selected slot by LRU, t_last = -1
+[34m44.49.481.494[0m [32mI [0mslot launch_slot_: id  0 | task 6 | processing task, is_child = 0
+[34m44.49.481.498[0m [32mI [0mslot slot_save_an: id  1 | task -1 | saving idle slot to prompt cache
+[34m44.49.482.570[0m [35mW srv   prompt_save:  - saving prompt with length 3, total state size = 0.329 MiB
+[0m[34m44.50.854.414[0m [32mI [0mslot prompt_clear: id  1 | task -1 | clearing prompt with 3 tokens
+[34m44.50.854.486[0m [35mW srv        update:  - cache state: 3 prompts, 1.424 MiB (limits: 8192.000 MiB, 32768 tokens, 74786 est)
+[0m[34m44.50.854.488[0m [35mW srv        update:    - prompt 000002A6C4CAF790:       7 tokens, checkpoints:  0,     0.766 MiB
+[0m[34m44.50.854.489[0m [35mW srv        update:    - prompt 000002A6C4CAFAA0:       3 tokens, checkpoints:  0,     0.329 MiB
+[0m[34m44.50.854.490[0m [35mW srv        update:    - prompt 000002A6C4CAFBF0:       3 tokens, checkpoints:  0,     0.329 MiB
+[0m[34m44.50.854.507[0m [32mI [0mslot update_slots: id  0 | task 6 | new prompt, n_ctx_slot = 32768, n_keep = 0, task.n_tokens = 80
+[34m44.50.854.511[0m [32mI [0mslot update_slots: id  0 | task 6 | n_tokens = 0, memory_seq_rm [0, end)
+[34m44.50.854.805[0m [32mI [0mslot update_slots: id  0 | task 6 | prompt processing done, n_tokens = 80, batch.n_tokens = 80
+[34m44.50.926.388[0m [32mI [0mslot      release: id  0 | task 6 | stop processing: n_tokens = 80, truncated = 0
+[34m44.50.926.405[0m [32mI [0msrv  update_slots: all slots are idle
+[34m44.50.928.124[0m [32mI [0msrv  log_server_r: done request: POST /v1/embeddings 100.95.171.42 200
+[34m45.05.735.353[0m [32mI [0mslot get_availabl: id  3 | task -1 | selected slot by LRU, t_last = 374514103
+[34m45.05.735.360[0m [32mI [0mslot launch_slot_: id  3 | task 8 | processing task, is_child = 0
+[34m45.05.735.361[0m [32mI [0mslot slot_save_an: id  0 | task -1 | saving idle slot to prompt cache
+[34m45.05.735.387[0m [35mW srv   prompt_save:  - saving prompt with length 80, total state size = 8.752 MiB
+[0m[34m45.05.742.380[0m [32mI [0mslot prompt_clear: id  0 | task -1 | clearing prompt with 80 tokens
+[34m45.05.742.412[0m [35mW srv        update:  - cache state: 4 prompts, 10.176 MiB (limits: 8192.000 MiB, 32768 tokens, 74871 est)
+[0m[34m45.05.742.414[0m [35mW srv        update:    - prompt 000002A6C4CAF790:       7 tokens, checkpoints:  0,     0.766 MiB
+[0m[34m45.05.742.415[0m [35mW srv        update:    - prompt 000002A6C4CAFAA0:       3 tokens, checkpoints:  0,     0.329 MiB
+[0m[34m45.05.742.415[0m [35mW srv        update:    - prompt 000002A6C4CAFBF0:       3 tokens, checkpoints:  0,     0.329 MiB
+[0m[34m45.05.742.416[0m [35mW srv        update:    - prompt 000002A6C4CAFF70:      80 tokens, checkpoints:  0,     8.752 MiB
+[0m[34m45.05.742.424[0m [32mI [0mslot update_slots: id  3 | task 8 | new prompt, n_ctx_slot = 32768, n_keep = 0, task.n_tokens = 5
+[34m45.05.742.426[0m [32mI [0mslot update_slots: id  3 | task 8 | n_tokens = 0, memory_seq_rm [0, end)
+[34m45.05.742.449[0m [32mI [0mslot update_slots: id  3 | task 8 | prompt processing done, n_tokens = 5, batch.n_tokens = 5
+[34m45.06.317.652[0m [32mI [0mslot      release: id  3 | task 8 | stop processing: n_tokens = 5, truncated = 0
+[34m45.06.317.672[0m [32mI [0msrv  update_slots: all slots are idle
+[34m45.06.318.021[0m [32mI [0msrv  log_server_r: done request: POST /v1/embeddings 100.95.171.42 200
+[34m46.59.904.311[0m [32mI [0mslot get_availabl: id  2 | task -1 | selected slot by LRU, t_last = 374945107
+[34m46.59.904.321[0m [32mI [0mslot launch_slot_: id  2 | task 10 | processing task, is_child = 0
+[34m46.59.904.323[0m [32mI [0mslot slot_save_an: id  3 | task -1 | saving idle slot to prompt cache
+[34m46.59.904.346[0m [35mW srv   prompt_save:  - saving prompt with length 5, total state size = 0.548 MiB
+[0m[34m46.59.908.981[0m [32mI [0mslot prompt_clear: id  3 | task -1 | clearing prompt with 5 tokens
+[34m46.59.909.008[0m [35mW srv        update:  - cache state: 5 prompts, 10.723 MiB (limits: 8192.000 MiB, 32768 tokens, 74867 est)
+[0m[34m46.59.909.010[0m [35mW srv        update:    - prompt 000002A6C4CAF790:       7 tokens, checkpoints:  0,     0.766 MiB
+[0m[34m46.59.909.011[0m [35mW srv        update:    - prompt 000002A6C4CAFAA0:       3 tokens, checkpoints:  0,     0.329 MiB
+[0m[34m46.59.909.011[0m [35mW srv        update:    - prompt 000002A6C4CAFBF0:       3 tokens, checkpoints:  0,     0.329 MiB
+[0m[34m46.59.909.012[0m [35mW srv        update:    - prompt 000002A6C4CAFF70:      80 tokens, checkpoints:  0,     8.752 MiB
+[0m[34m46.59.909.013[0m [35mW srv        update:    - prompt 000002A6C4CAFCD0:       5 tokens, checkpoints:  0,     0.548 MiB
+[0m[34m46.59.909.022[0m [32mI [0mslot update_slots: id  2 | task 10 | new prompt, n_ctx_slot = 32768, n_keep = 0, task.n_tokens = 46
+[34m46.59.909.023[0m [32mI [0mslot update_slots: id  2 | task 10 | n_tokens = 0, memory_seq_rm [0, end)
+[34m46.59.909.042[0m [32mI [0mslot update_slots: id  2 | task 10 | prompt processing done, n_tokens = 46, batch.n_tokens = 46
+[34m46.59.918.143[0m [32mI [0mslot      release: id  2 | task 10 | stop processing: n_tokens = 46, truncated = 0
+[34m46.59.918.178[0m [32mI [0msrv  update_slots: all slots are idle
+[34m46.59.919.007[0m [32mI [0msrv  log_server_r: done request: POST /v1/embeddings 100.95.171.42 200

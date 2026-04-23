@@ -1,0 +1,15 @@
+.venv/
+.pytest_cache/
+__pycache__/
+*.pyc
+*.pyo
+*.pyd
+
+.env
+
+argus-ingest-wrapper-data/
+sample-scripts/
+*.jsonl
+
+Thumbs.db
+Desktop.ini

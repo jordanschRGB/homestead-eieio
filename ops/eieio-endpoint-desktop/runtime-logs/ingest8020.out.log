@@ -1,0 +1,7 @@
+INFO:     127.0.0.1:62514 - "GET /health HTTP/1.1" 200 OK
+INFO:     127.0.0.1:62517 - "GET /health HTTP/1.1" 200 OK
+INFO:     127.0.0.1:62520 - "POST /v1/ingest/text HTTP/1.1" 200 OK
+INFO:     127.0.0.1:62351 - "GET /help HTTP/1.1" 200 OK
+INFO:     127.0.0.1:50646 - "GET /health HTTP/1.1" 200 OK
+INFO:     127.0.0.1:64282 - "GET /health HTTP/1.1" 200 OK
+INFO:     127.0.0.1:55371 - "GET /health HTTP/1.1" 401 Unauthorized
